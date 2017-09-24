@@ -1,0 +1,29 @@
+/**
+ * Created by nils on 2017-09-24.
+ */
+
+public class XMainProgram {
+
+    public static void main(String[] args) {
+        int n = 0;
+        try {
+            n = Integer.parseInt(args[0]);
+        } catch (NumberFormatException e) {
+            System.out.println("Incorrect input: Integer required. Try again");
+            System.exit(0);
+        }
+
+        if ((args.length - 1) != n*2) {
+            System.out.println("Incorrect input: Incorrect number of strings");
+            System.exit(0);
+        }
+
+        Frame frame = new Frame();
+
+        for (int i = 1; i < n * 2; i += 2) {
+            frame.addButton(new XButton(args[i], args[i + 1]));
+        }
+
+    }
+
+}
