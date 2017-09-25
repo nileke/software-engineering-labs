@@ -2,7 +2,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.beans.PropertyChangeListener;
 
 /**
  * Created by nils on 2017-09-22.
@@ -21,11 +20,16 @@ public class XButton extends JButton implements ActionListener {
     }
 
     private void toggleState() {
-        if (this.getText().equals(s1)) {
-            this.setText(s2);
-        } else {
-            this.setText(s1);
-        }
+//        if (this.getText().equals(s1)) {
+//            this.setText(s2);
+//        } else {
+//            this.setText(s1);
+//        }
+
+        // Color toggleColor = super.getBackground() == this.c1 ? this.c2 : this.c1;
+        String toggleText = super.getText() == this.s1 ? this.s2 : this.s1;
+        // this.setBackground(toggleColor);
+        this.setText(toggleText);
     }
 
 
