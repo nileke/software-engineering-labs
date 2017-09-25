@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 /**
  * Created by nils on 2017-09-22.
  */
-public class XButton extends JButton implements ActionListener {
+public class XButton extends JButton {
 
     private String s1;
     private String s2;
@@ -16,10 +16,9 @@ public class XButton extends JButton implements ActionListener {
         this.s2 = s2;
 
         this.setText(s1);
-        this.addActionListener(this);
     }
 
-    private void toggleState() {
+    public void toggleState() {
 //        if (this.getText().equals(s1)) {
 //            this.setText(s2);
 //        } else {
@@ -33,10 +32,6 @@ public class XButton extends JButton implements ActionListener {
     }
 
 
-
-    public void actionPerformed(ActionEvent a) {
-        this.toggleState();
-    }
 
 }
 

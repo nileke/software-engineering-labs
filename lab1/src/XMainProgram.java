@@ -1,8 +1,12 @@
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Created by nils on 2017-09-24.
  */
 
-public class XMainProgram {
+public class XMainProgram  {
+    private XButton[] MyButtonArray;
 
     public static void main(String[] args) {
         int n = 0;
@@ -18,12 +22,16 @@ public class XMainProgram {
             System.exit(0);
         }
 
-        Frame frame = new Frame();
+        XFrame frame = new XFrame();
 
         for (int i = 1; i < n * 2; i += 2) {
             frame.addButton(new XButton(args[i], args[i + 1]));
         }
-
     }
 
+
+
+
 }
+
+

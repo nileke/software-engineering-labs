@@ -26,7 +26,7 @@ class Frame extends JFrame {
 
     }
 
-    void addButton(JButton button) {
+    addButton(JButton button) {
         panel.add(button);
     }
 }
