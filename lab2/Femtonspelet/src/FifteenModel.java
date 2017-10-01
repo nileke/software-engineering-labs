@@ -12,12 +12,84 @@ class FifteenModel implements Boardgame {
     private String[][] status = new String[4][4];  // spelplanen
     private int iemp, jemp;                        // index till den tomma rutan
 
-    public boolean move(int x, int y) {
-        return true; // Placeholder
+
+    FifteenModel() {
+        int n = 1;
+        for (int x=0; x < 4; x++) {
+            for (int y=0; y < 4; y++) {
+                if (n < 16) {
+                    status[x][y] = Integer.toString(n);
+                    n++;
+                } else {
+                    iemp = x;
+                    jemp = y;
+                }
+            }
+        }
+        // shuffleBoard();
     }
 
-    public String getStatus(int x, int y) {
-        return status[x][y];
+    @Override
+    public boolean move(int i, int j) {
+        if (!inbounds(i) || !inbounds(j)) {
+            currentMessage = "Please choose a placement on the board...";
+            return false;
+        }
+        try {
+            if (inbounds(i + 1) && status[i + 1][j] == null) {
+                currentMessage = "Ok";
+                status[i + 1][j] = status[i][j];
+                status[i][j] = null;
+                iemp = i;
+                jemp = j;
+                return true;
+            } else if (inbounds(i - 1) && status[i - 1][j] == null) {
+                currentMessage = "Ok";
+                status[i - 1][j] = status[i][j];
+                status[i][j] = null;
+                iemp = i;
+                jemp = j;
+                return true;
+            } else if (inbounds(j + 1) && status[i][j + 1] == null) {
+                currentMessage = "Ok";
+                status[i][j + 1] = status[i][j];
+                status[i][j] = null;
+                iemp = i;
+                jemp = j;
+                return true;
+            } else if (inbounds(j - 1) && status[i][j - 1] == null) {
+                currentMessage = "Ok";
+                status[i][j - 1] = status[i][j];
+                status[i][j] = null;
+                iemp = i;
+                jemp = j;
+                return true;
+            } else {
+                currentMessage = "Please choose a tile next to the empty one...";
+                return false;
+            }
+        } catch (IndexOutOfBoundsException e) {
+            currentMessage = "You broke something";
+            return false;
+        }
+
+        //return false;
+    }
+
+    private void shuffleBoard() {
+
+    }
+
+
+    private boolean inbounds(int pos) {
+        return (pos >= 0) && (pos < 4);
+    }
+
+    public String getStatus(int i, int j) {
+        if (status[i][j] == null) {
+            return " ";
+        }
+        return status[i][j];
     }
 
 
@@ -29,15 +101,5 @@ class FifteenModel implements Boardgame {
         return currentMessage;
     }
 
-    FifteenModel() {
-        int n = 1;
-        for (int x=0; x < 4; x++) {
-            for (int y=0; y < 4; y++) {
-                status[x][y] = Integer.toString(n);
-                if (n < 16) {
-                    n++;
-                }
-            }
-        }
-    }
+
 }
