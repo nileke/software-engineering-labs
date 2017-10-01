@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
  */
 
 public class XMainProgram  {
-    private XButton[] MyButtonArray;
 
     public static void main(String[] args) {
         int n = 0;
