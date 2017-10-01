@@ -6,8 +6,8 @@ public class Student extends Person {
     private int year;
 
     Student(String nameIn, int ageIn, int yearIn) {
-    super(nameIn, ageIn);
-    this.year = yearIn;
+        super(nameIn, ageIn);
+        this.year = yearIn;
     }
 
     Student() {
