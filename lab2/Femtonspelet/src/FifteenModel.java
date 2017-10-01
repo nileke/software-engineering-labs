@@ -17,13 +17,15 @@ class FifteenModel implements Boardgame {
         int n = 1;
         for (int x=0; x < 4; x++) {
             for (int y=0; y < 4; y++) {
-                if (n < 16) {
+                if (n < 10) {
+                    status[x][y] = " " + Integer.toString(n);
+                }
+                else if (n > 9 && n < 16) {
                     status[x][y] = Integer.toString(n);
-                    n++;
                 } else {
                     iemp = x;
                     jemp = y;
-                }
+                } n++;
             }
         }
         // shuffleBoard();
@@ -31,6 +33,7 @@ class FifteenModel implements Boardgame {
 
     @Override
     public boolean move(int i, int j) {
+        // TODO Split move into different methods. One who checks if move is valid validMove(), one who makes the move move()
         if (!inbounds(i) || !inbounds(j)) {
             currentMessage = "Please choose a placement on the board...";
             return false;
@@ -77,9 +80,15 @@ class FifteenModel implements Boardgame {
     }
 
     private void shuffleBoard() {
-
+        // TODO create shuffle of gameboard and call from constructor
+        // Create a mirror array with true/false for valid moves?
     }
 
+    private void validMoves(int i, int j) {
+        // checks valid moves from the coordinates i and j
+
+
+    }
 
     private boolean inbounds(int pos) {
         return (pos >= 0) && (pos < 4);
