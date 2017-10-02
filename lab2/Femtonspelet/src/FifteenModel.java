@@ -1,5 +1,7 @@
+import javafx.util.Pair;
+
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Random;
 
 /**
  * Created by Nils on 2017-09-30.
@@ -28,66 +30,77 @@ class FifteenModel implements Boardgame {
                 } n++;
             }
         }
-        // shuffleBoard();
+        shuffleBoard();
     }
+
 
     @Override
     public boolean move(int i, int j) {
-        // TODO Split move into different methods. One who checks if move is valid validMove(), one who makes the move move()
         if (!inbounds(i) || !inbounds(j)) {
             currentMessage = "Please choose a placement on the board...";
             return false;
         }
-        try {
-            if (inbounds(i + 1) && status[i + 1][j] == null) {
-                currentMessage = "Ok";
-                status[i + 1][j] = status[i][j];
-                status[i][j] = null;
-                iemp = i;
-                jemp = j;
-                return true;
-            } else if (inbounds(i - 1) && status[i - 1][j] == null) {
-                currentMessage = "Ok";
-                status[i - 1][j] = status[i][j];
-                status[i][j] = null;
-                iemp = i;
-                jemp = j;
-                return true;
-            } else if (inbounds(j + 1) && status[i][j + 1] == null) {
-                currentMessage = "Ok";
-                status[i][j + 1] = status[i][j];
-                status[i][j] = null;
-                iemp = i;
-                jemp = j;
-                return true;
-            } else if (inbounds(j - 1) && status[i][j - 1] == null) {
-                currentMessage = "Ok";
-                status[i][j - 1] = status[i][j];
-                status[i][j] = null;
-                iemp = i;
-                jemp = j;
-                return true;
-            } else {
-                currentMessage = "Please choose a tile next to the empty one...";
-                return false;
-            }
-        } catch (IndexOutOfBoundsException e) {
-            currentMessage = "You broke something";
+        ArrayList<Pair> availMoves = validMoves(iemp, jemp);
+        if (availMoves.contains(new Pair<>(i, j))) {
+            currentMessage = "Ok.";
+            status[iemp][jemp] = status[i][j];
+            status[i][j] = null;
+            iemp = i;
+            jemp = j;
+
+        } else {
+            currentMessage = "Please choose a tile next to the empty one...";
             return false;
         }
-
-        //return false;
+        return true;
     }
 
     private void shuffleBoard() {
         // TODO create shuffle of gameboard and call from constructor
-        // Create a mirror array with true/false for valid moves?
+        // Random a move from validMoves()
+
+        ArrayList<Pair> availMoves;
+        int ranIndex;
+        Pair newMove;
+        Pair oldMove = new Pair<Integer, Integer>(iemp, jemp);
+
+        for (int i=0; i < 100; i++) {
+            availMoves = validMoves(iemp, jemp);
+            ranIndex = randInt(0, availMoves.size()-1);
+            newMove = availMoves.get(ranIndex);
+
+            if (newMove.getValue() == oldMove.getValue() && newMove.getKey() == oldMove.getKey()) {
+                continue;
+            }
+
+            int left = (Integer) newMove.getKey();
+            int right = (Integer) newMove.getValue();
+            move(left, right);
+            availMoves.clear();
+            //oldMove = newMove;
+
+
+        }
     }
 
-    private void validMoves(int i, int j) {
+    private ArrayList<Pair> validMoves(int i, int j) {
         // checks valid moves from the coordinates i and j
+        // Pair<Integer, Integer> p;
+        ArrayList<Pair> availableMoves = new ArrayList<>();
 
-
+        if (inbounds(i+1)) {
+            availableMoves.add(new Pair<>(i+1, j));
+        }
+        if (inbounds(i-1)) {
+            availableMoves.add(new Pair<>(i-1, j));
+        }
+        if (inbounds(j+1)) {
+            availableMoves.add(new Pair<>(i, j+1));
+        }
+        if (inbounds(j-1)){
+            availableMoves.add(new Pair<>(i, j-1));
+        }
+        return availableMoves;
     }
 
     private boolean inbounds(int pos) {
@@ -110,5 +123,18 @@ class FifteenModel implements Boardgame {
         return currentMessage;
     }
 
+    //https://stackoverflow.com/questions/20389890/generating-a-random-number-between-1-and-10-java
+    public static int randInt(int min, int max) {
+        Random rand = new Random();
+        int randomNum = rand.nextInt((max - min) + 1) + min;
+        return randomNum;
+    }
 
+    public void printBoard(){
+        for (int i=0; i<4; i++) {
+            for (int j=0; j<4; j++)
+                System.out.print("  " + getStatus(i,j)); // getStatus
+            System.out.println();
+        }
+    }
 }
