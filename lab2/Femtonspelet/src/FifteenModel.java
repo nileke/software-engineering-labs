@@ -56,7 +56,6 @@ class FifteenModel implements Boardgame {
     }
 
     private void shuffleBoard() {
-        // TODO create shuffle of gameboard and call from constructor
         // Random a move from validMoves()
 
         ArrayList<Pair> availMoves;
@@ -77,8 +76,6 @@ class FifteenModel implements Boardgame {
             int right = (Integer) newMove.getValue();
             move(left, right);
             availMoves.clear();
-            //oldMove = newMove;
-
 
         }
     }
