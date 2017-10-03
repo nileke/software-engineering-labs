@@ -37,7 +37,7 @@ class FifteenModel implements Boardgame {
     @Override
     public boolean move(int i, int j) {
         if (!inbounds(i) || !inbounds(j)) {
-            currentMessage = "Please choose a placement on the board...";
+            setMessage("Please choose a placement on the board...");
             return false;
         }
         // Get available moves
@@ -46,14 +46,14 @@ class FifteenModel implements Boardgame {
         // Check if users move is in available moves
         if (availMoves.contains(new Pair<>(i, j))) {
             // Make the move and set iemp and jemp to old tile
-            currentMessage = "Ok.";
+            setMessage("Ok.");
             status[iemp][jemp] = status[i][j];
             status[i][j] = null;
             iemp = i;
             jemp = j;
 
         } else {
-            currentMessage = "Please choose a tile next to the empty one...";
+            setMessage("Please choose a tile next to the empty one...");
             return false;
         }
         return true;
@@ -64,7 +64,7 @@ class FifteenModel implements Boardgame {
         ArrayList<Pair> availMoves;
         int ranIndex;
         Pair newMove;
-        Pair oldMove = new Pair<Integer, Integer>(iemp, jemp);
+        Pair oldMove = new Pair<>(iemp, jemp);
 
         for (int i=0; i < 100; i++) {
             // Get available moves
