@@ -2,15 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b6c54d33-2610-41a9-b755-4bff568e6ca7" name="Default" comment="ViewControl Square class&#10;&#10;Some methods and code skeleton">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/Square.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/ViewControl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/Femtonspelet/FifteenModel.class" afterPath="$PROJECT_DIR$/out/production/Femtonspelet/FifteenModel.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../lab0/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../lab0/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../lab0/src/main.java" afterPath="$PROJECT_DIR$/../../lab0/src/main.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../lab1/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../../lab1/.idea/vcs.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/FifteenModel.java" afterPath="$PROJECT_DIR$/src/FifteenModel.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ViewControl.java" afterPath="$PROJECT_DIR$/src/ViewControl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -53,8 +49,8 @@
       <file leaf-file-name="ViewControl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ViewControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-48">
-              <caret line="14" column="54" lean-forward="false" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+            <state relative-caret-position="988">
+              <caret line="38" column="41" lean-forward="false" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,8 +71,8 @@
       <file leaf-file-name="Square.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Square.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="498">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
+            <state relative-caret-position="339">
+              <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#236#237#0" expanded="true" />
@@ -449,7 +445,14 @@
       <option name="project" value="LOCAL" />
       <updated>1506949237782</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="ViewControl Square class&#10;&#10;Some methods and code skeleton">
+      <created>1507041391002</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1507041391002</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TodoView">
@@ -713,20 +716,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Square.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="498">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#236#237#0" expanded="true" />
-            <element signature="e#259#260#0" expanded="true" />
-            <element signature="e#390#391#0" expanded="true" />
-            <element signature="e#429#430#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Text15.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
@@ -743,10 +732,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/Square.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="26" column="30" lean-forward="false" selection-start-line="26" selection-start-column="16" selection-end-line="26" selection-end-column="30" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#236#237#0" expanded="true" />
+            <element signature="e#259#260#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/ViewControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-48">
-          <caret line="14" column="54" lean-forward="false" selection-start-line="14" selection-start-column="54" selection-end-line="14" selection-end-column="54" />
+        <state relative-caret-position="988">
+          <caret line="38" column="41" lean-forward="false" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
