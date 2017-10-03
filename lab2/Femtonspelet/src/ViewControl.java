@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 public class ViewControl extends JFrame implements ActionListener {
 
     private Boardgame game;
-    private int size;
+    private int size; //
     private Square[][] board;
     private JLabel mess = new JLabel();
 
@@ -18,26 +18,37 @@ public class ViewControl extends JFrame implements ActionListener {
         // Create new JFrame and set set an matrix 4x4
         // add JLabel with message
 
-        // TODO create JFrame
-        // TODO add buttons to JFrame
-        // TODO add JLabel to JFrame
+        // COMPLETE create JFrame
+        // COMPLETE add buttons to JFrame
+        // COMPLETE add JLabel to JFrame
         this.game = gm;
+        board = new Square[4][4];
 
+        // TODO set frame dimensions
+        // TODO add JLabel
         JFrame frame = new JFrame("FifteenModel");
-        JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(4,4));
-        // Add JLabel mess
+        frame.setVisible(true);
 
-        // Put in new method? Maybe generateBoard? Or do we need to add to Square[][] differently?
-        game = new FifteenModel();
+        JPanel panel = new JPanel();
+        frame.add(panel);
+
+        panel.setLayout(new GridLayout(4,4));
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        populateBoard(panel);
+
+    }
+
+    private void populateBoard(JPanel panel) {
         for (int i=0; i < 4; i++) {
             for (int j=0; j < 4; j++) {
                 String squareText = game.getStatus(i,j);
                 Square sq = new Square(i,j);
                 sq.setText(squareText);
+                sq.addActionListener(this);
                 board[i][j] = sq;
-                frame.add(sq); // Enough?
-           }
+                panel.add(sq); // Enough?
+            }
         }
     }
 
@@ -65,7 +76,6 @@ public class ViewControl extends JFrame implements ActionListener {
             for (int j = 0; j < 4; j++) {
                 String squareText = game.getStatus(i, j);
                 board[i][j].setText(squareText);
-
             }
         }
     }
