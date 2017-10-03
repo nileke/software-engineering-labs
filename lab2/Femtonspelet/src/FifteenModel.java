@@ -88,7 +88,7 @@ class FifteenModel implements Boardgame {
     }
 
     private ArrayList<Pair> validMoves(int i, int j) {
-        // checks valid moves from the coordinates i and j
+        // checks valid moves with i and j as origin
 
         ArrayList<Pair> availableMoves = new ArrayList<>();
 
