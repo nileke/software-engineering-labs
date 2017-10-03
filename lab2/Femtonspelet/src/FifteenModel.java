@@ -22,7 +22,7 @@ class FifteenModel implements Boardgame {
                 if (n < 10) {
                     status[x][y] = " " + Integer.toString(n);
                 }
-                else if (n > 9 && n < 16) {
+                else if (n < 16) {
                     status[x][y] = Integer.toString(n);
                 } else {
                     iemp = x;
@@ -40,8 +40,12 @@ class FifteenModel implements Boardgame {
             currentMessage = "Please choose a placement on the board...";
             return false;
         }
+        // Get available moves
         ArrayList<Pair> availMoves = validMoves(iemp, jemp);
+
+        // Check if users move is in available moves
         if (availMoves.contains(new Pair<>(i, j))) {
+            // Make the move and set iemp and jemp to old tile
             currentMessage = "Ok.";
             status[iemp][jemp] = status[i][j];
             status[i][j] = null;
@@ -56,7 +60,6 @@ class FifteenModel implements Boardgame {
     }
 
     private void shuffleBoard() {
-        // Random a move from validMoves()
 
         ArrayList<Pair> availMoves;
         int ranIndex;
@@ -64,14 +67,18 @@ class FifteenModel implements Boardgame {
         Pair oldMove = new Pair<Integer, Integer>(iemp, jemp);
 
         for (int i=0; i < 100; i++) {
+            // Get available moves
             availMoves = validMoves(iemp, jemp);
+            // Take a random index to get a available move
             ranIndex = randInt(0, availMoves.size()-1);
             newMove = availMoves.get(ranIndex);
 
+            // To get a better shuffle, don't make the move if it was the old move
             if (newMove.getValue() == oldMove.getValue() && newMove.getKey() == oldMove.getKey()) {
                 continue;
             }
 
+            // Make the move and clear the list
             int left = (Integer) newMove.getKey();
             int right = (Integer) newMove.getValue();
             move(left, right);
@@ -82,7 +89,7 @@ class FifteenModel implements Boardgame {
 
     private ArrayList<Pair> validMoves(int i, int j) {
         // checks valid moves from the coordinates i and j
-        // Pair<Integer, Integer> p;
+
         ArrayList<Pair> availableMoves = new ArrayList<>();
 
         if (inbounds(i+1)) {
@@ -121,13 +128,14 @@ class FifteenModel implements Boardgame {
     }
 
     //https://stackoverflow.com/questions/20389890/generating-a-random-number-between-1-and-10-java
-    public static int randInt(int min, int max) {
+    private static int randInt(int min, int max) {
+        // get a random number
         Random rand = new Random();
-        int randomNum = rand.nextInt((max - min) + 1) + min;
-        return randomNum;
+        return rand.nextInt((max - min) + 1) + min;
     }
 
     public void printBoard(){
+        // For troubleshooting
         for (int i=0; i<4; i++) {
             for (int j=0; j<4; j++)
                 System.out.print("  " + getStatus(i,j)); // getStatus
