@@ -24,18 +24,35 @@ public class ViewControl extends JFrame implements ActionListener {
         this.game = gm;
         board = new Square[4][4];
 
-        // TODO set frame dimensions
-        // TODO add JLabel
+        // COMPLETE set frame dimensions
+        // COMPLETE add JLabel
+
+        // TODO Tidy up the layout
+        // TODO review constructor
         JFrame frame = new JFrame("FifteenModel");
+        frame.setSize(400,500);
+
         frame.setVisible(true);
+        // Create panels
+        JPanel mainPanel = new JPanel();
+        JPanel panelGame = new JPanel();
+        JPanel panelMessage = new JPanel();
 
-        JPanel panel = new JPanel();
-        frame.add(panel);
+        // Setup panels
+        mainPanel.setLayout(new BorderLayout());
+        // mainPanel.add();
 
-        panel.setLayout(new GridLayout(4,4));
+
+        panelGame.setLayout(new GridLayout(4,4));
+        panelMessage.add(mess);
+
+        mainPanel.add(panelGame, BorderLayout.CENTER);
+        mainPanel.add(panelMessage, BorderLayout.PAGE_END);
+        frame.add(mainPanel);
+
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-        populateBoard(panel);
+        populateBoard(panelGame);
 
     }
 
