@@ -7,7 +7,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../lab1/.idea/vcs.xml" afterPath="$PROJECT_DIR$/../../lab1/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../../lab1/Extrauppgift/.idea/workspace.xml" afterPath="$PROJECT_DIR$/../../lab1/Extrauppgift/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/ViewControl.java" afterPath="$PROJECT_DIR$/src/ViewControl.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +49,7 @@
       <file leaf-file-name="ViewControl.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/ViewControl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
+            <state relative-caret-position="-78">
               <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -494,7 +493,14 @@
       <option name="project" value="LOCAL" />
       <updated>1507051135352</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ViewControl Square class&#10;&#10;Some methods and code skeleton">
+      <created>1507123648773</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1507123648773</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TodoView">
@@ -576,10 +582,10 @@
     <MESSAGE value="Added som TODOs" />
     <MESSAGE value="Remade move and added shuffleBoard method + validMoves method" />
     <MESSAGE value="Added comments and code fixes" />
-    <MESSAGE value="ViewControl Square class&#10;&#10;Some methods and code skeleton" />
     <MESSAGE value="Created method body for actionPerformed and updateBoard()&#10;&#10;Added TODOs for unfinished methods" />
     <MESSAGE value="Created populateBoard() method &#10;&#10;Called by constructor. Added new TODOs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created populateBoard() method &#10;&#10;Called by constructor. Added new TODOs" />
+    <MESSAGE value="ViewControl Square class&#10;&#10;Some methods and code skeleton" />
+    <option name="LAST_COMMIT_MESSAGE" value="ViewControl Square class&#10;&#10;Some methods and code skeleton" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -902,7 +908,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ViewControl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
+        <state relative-caret-position="-78">
           <caret line="30" column="34" lean-forward="false" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
