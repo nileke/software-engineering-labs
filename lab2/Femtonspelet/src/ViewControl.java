@@ -12,7 +12,7 @@ public class ViewControl extends JFrame implements ActionListener {
     private Square[][] board;
     private JLabel mess = new JLabel();
 
-    ViewControl(Boardgame gm, int n) {
+    ViewControl(Boardgame gm) {
         // Create a new board by creating a new FifteenModel object
         // read from getStatus in new object to populate Square[][]
         // Create new JFrame and set set an matrix 4x4
@@ -30,7 +30,7 @@ public class ViewControl extends JFrame implements ActionListener {
         // TODO Tidy up the layout
         // TODO review constructor
         JFrame frame = new JFrame("FifteenModel");
-        frame.setSize(400,500);
+        frame.setSize(500,500);
 
         frame.setVisible(true);
         // Create panels
