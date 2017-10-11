@@ -9,7 +9,7 @@ import java.awt.*;
 class Frame extends JFrame {
     private JPanel panel;
     Frame() {
-        JFrame frame = new JFrame("Nils Ekenbäck");
+        JFrame frame = new JFrame("Nils Ekenbäck & Ben Forsrup");
         frame.setVisible(true);
         frame.setSize(800,430);
 
