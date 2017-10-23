@@ -8,29 +8,25 @@ import java.awt.event.ActionListener;
 public class ViewControl extends JFrame implements ActionListener {
 
     private Boardgame game;
-    private int size; //
+    private int size;
     private Square[][] board;
     private JLabel mess = new JLabel();
 
-    ViewControl(Boardgame gm) {
+    ViewControl(Boardgame gm, int n) {
         // Create a new board by creating a new FifteenModel object
         // read from getStatus in new object to populate Square[][]
         // Create new JFrame and set set an matrix 4x4
         // add JLabel with message
 
-        // COMPLETE create JFrame
-        // COMPLETE add buttons to JFrame
-        // COMPLETE add JLabel to JFrame
         this.game = gm;
-        board = new Square[4][4];
-
-        // COMPLETE set frame dimensions
-        // COMPLETE add JLabel
+        this.size = n;
+        board = new Square[size][size];
+        mess.setText(game.getMessage());
 
         // TODO Tidy up the layout
         // TODO review constructor
         JFrame frame = new JFrame("FifteenModel");
-        frame.setSize(500,500);
+
 
         frame.setVisible(true);
         // Create panels
@@ -40,11 +36,10 @@ public class ViewControl extends JFrame implements ActionListener {
 
         // Setup panels
         mainPanel.setLayout(new BorderLayout());
-        // mainPanel.add();
 
-
-        panelGame.setLayout(new GridLayout(4,4));
+        panelGame.setLayout(new GridLayout(size,size));
         panelMessage.add(mess);
+
 
         mainPanel.add(panelGame, BorderLayout.CENTER);
         mainPanel.add(panelMessage, BorderLayout.PAGE_END);
@@ -53,18 +48,20 @@ public class ViewControl extends JFrame implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         populateBoard(panelGame);
+        frame.setSize(500,500);
+        // frame.pack();
 
     }
 
     private void populateBoard(JPanel panel) {
-        for (int i=0; i < 4; i++) {
-            for (int j=0; j < 4; j++) {
+        for (int i=0; i < size; i++) {
+            for (int j=0; j < size; j++) {
                 String squareText = game.getStatus(i,j);
                 Square sq = new Square(i,j);
                 sq.setText(squareText);
                 sq.addActionListener(this);
                 board[i][j] = sq;
-                panel.add(sq); // Enough?
+                panel.add(sq);
             }
         }
     }
@@ -89,8 +86,8 @@ public class ViewControl extends JFrame implements ActionListener {
 
     private void updateBoard() {
         // Update the whole board by calling getStatus() from FifteenModel class
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 String squareText = game.getStatus(i, j);
                 board[i][j].setText(squareText);
             }
