@@ -41,7 +41,7 @@ public class TicTacToeModel implements Boardgame {
         }
 
         setCurrentPlayer();
-        currentMessage = currentPlayer + "'s turn";
+        currentMessage = "Player " + currentPlayer + "'s turn";
 
         if (count%2 != 0) {
             status[i][j] = "X";
@@ -54,6 +54,7 @@ public class TicTacToeModel implements Boardgame {
     }
 
     private boolean phaseTwo(int i, int j) {
+
         if (status[i][j] == null && !mark) {
             currentMessage = "Choose an " +  currentPlayer + " marker";
             return false;
@@ -63,12 +64,13 @@ public class TicTacToeModel implements Boardgame {
             xtemp = i;
             ytemp = j;
             mark = true;
-            currentMessage = "Tile: " + i + ", " + j + " was marked";
+            currentMessage = "Choose new position";
         } else {
             if (status[i][j] == null) {
                 status[i][j] = status[xtemp][ytemp];
                 status[xtemp][ytemp] = null;
                 setCurrentPlayer();
+                currentMessage = "Player " + currentPlayer + "'s turn";
                 mark = false;
                 count++;
             } else {
