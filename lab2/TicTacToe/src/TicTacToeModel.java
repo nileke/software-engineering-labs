@@ -65,6 +65,10 @@ public class TicTacToeModel implements Boardgame {
             ytemp = j;
             mark = true;
             currentMessage = "Choose new position";
+        } else if (mark && getStatus(i,j) == currentPlayer) {
+            xtemp = i;
+            ytemp = j;
+            currentMessage = "New marker selected, choose new position";
         } else {
             if (status[i][j] == null) {
                 status[i][j] = status[xtemp][ytemp];
