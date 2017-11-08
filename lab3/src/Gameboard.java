@@ -3,15 +3,13 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-/*
-Given class by course
- */
-
 class Gameboard extends JPanel {
 
-    private Icon[] icons = {new ImageIcon("rock.gif"),
-            new ImageIcon("paper.gif"),
-            new ImageIcon("scissors.gif")};
+    private Icon[] icons = {
+            new ImageIcon(Gameboard.class.getResource("/resources/rock.gif")),
+            new ImageIcon(Gameboard.class.getResource("/resources/paper.gif")),
+            new ImageIcon(Gameboard.class.getResource("/resources/scissors.gif"))};
+
 
     private JButton[] buttons = new JButton[3];
     private JButton lastPlayed; // remembers last chosen button/gesture
