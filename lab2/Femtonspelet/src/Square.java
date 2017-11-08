@@ -24,7 +24,7 @@ public class Square extends JButton {
     }
 
 
-    public Pair getCoordinates(){
+    Pair getCoordinates(){
         return new Pair<>(i, j);
     }
 

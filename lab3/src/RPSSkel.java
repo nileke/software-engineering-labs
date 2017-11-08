@@ -22,6 +22,7 @@ class RPSSkel extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         closebutton = new JButton("Close");
         myboard = new Gameboard("Myself", this); // Must be changed
+
         computersboard = new Gameboard("Computer");
         JPanel boards = new JPanel();
         boards.setLayout(new GridLayout(1,2));
@@ -33,17 +34,20 @@ class RPSSkel extends JFrame implements ActionListener {
         setVisible(true);
 
         setupConnection();
+
     }
 
     public static void main (String[] u) {
         new RPSSkel();
     }
 
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String countdown = "";
         counter++;
         System.out.println(counter);
+
         switch(counter) {
             case 1:
                 countdown = "ETT";
@@ -143,6 +147,7 @@ class RPSSkel extends JFrame implements ActionListener {
         } catch (IOException e) {
             System.out.println(e);
         }
+
     }
 
 }
