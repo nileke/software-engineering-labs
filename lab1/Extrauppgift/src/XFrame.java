@@ -10,7 +10,7 @@ class XFrame extends JFrame implements ActionListener {
 
     XFrame() {
         MyButtonArray = new ArrayList<>();
-        JFrame frame = new JFrame("Nils Ekenbäck");
+        JFrame frame = new JFrame("Nils Ekenbäck & Ben Forsrup");
         frame.setVisible(true);
         frame.setSize(800,430);
 

@@ -25,7 +25,7 @@ public class ViewControl extends JFrame implements ActionListener {
 
         // TODO Tidy up the layout
         // TODO review constructor
-        JFrame frame = new JFrame("FifteenModel");
+        JFrame frame = new JFrame("Tic Tac Toe");
 
 
         frame.setVisible(true);
