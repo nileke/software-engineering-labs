@@ -2,13 +2,14 @@ import java.util.*;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-class Gameboard extends JPanel {
 
+class Gameboard extends JPanel {
 
     private Icon[] icons = {
             new ImageIcon(Gameboard.class.getResource("/resources/rock.gif")),
             new ImageIcon(Gameboard.class.getResource("/resources/paper.gif")),
             new ImageIcon(Gameboard.class.getResource("/resources/scissors.gif"))};
+
 
     private JButton[] buttons = new JButton[3];
     private JButton lastPlayed; // remembers last chosen button/gesture

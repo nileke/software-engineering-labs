@@ -19,15 +19,7 @@ public class XButton extends JButton {
     }
 
     public void toggleState() {
-//        if (this.getText().equals(s1)) {
-//            this.setText(s2);
-//        } else {
-//            this.setText(s1);
-//        }
-
-        // Color toggleColor = super.getBackground() == this.c1 ? this.c2 : this.c1;
         String toggleText = super.getText() == this.s1 ? this.s2 : this.s1;
-        // this.setBackground(toggleColor);
         this.setText(toggleText);
     }
 
