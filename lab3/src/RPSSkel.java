@@ -44,26 +44,46 @@ class RPSSkel extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String countdown = "";
+        // String countdown = "";
         counter++;
-        System.out.println(counter);
-
-        switch(counter) {
-            case 1:
-                countdown = "ETT";
-                break;
-            case 2:
-                countdown = "TVÅ";
-                break;
-            case 3:
-                countdown = "TRE";
-        }
-        myboard.setLower(countdown);
-        computersboard.setLower(countdown);
-
+        // System.out.println(counter);
         myboard.resetColor();
         computersboard.resetColor();
 
+        switch(counter) {
+            case 1:
+                myboard.setLower("ETT");
+                computersboard.setLower("ETT");
+                break;
+            case 2:
+                myboard.setLower("TVÅ");
+                computersboard.setLower("TVÅ");
+                break;
+            case 3:
+                myboard.setLower("TRE");
+                computersboard.setLower("TRE");
+
+                counter = 0;
+                JButton playerButton = (JButton) e.getSource();
+                String playerChoice = playerButton.getActionCommand();
+                out.println(playerChoice); out.flush();
+                try {
+
+                    String compChoice = in.readLine();
+                    computersboard.markPlayed(compChoice);
+                    myboard.markPlayed(playerChoice);
+                    playerWin(playerChoice, compChoice);
+                } catch (IOException ioError) {
+                    System.out.println(ioError);
+                }
+        }
+        //myboard.setLower(countdown);
+        //computersboard.setLower(countdown);
+
+        //myboard.resetColor();
+        //computersboard.resetColor();
+
+/*
         if (counter == 3) {
             counter = 0;
             JButton playerButton = (JButton) e.getSource();
@@ -78,12 +98,13 @@ class RPSSkel extends JFrame implements ActionListener {
             } catch (IOException ioError) {
                 System.out.println(ioError);
             }
+*/
 
             // Check the move
             //playerWin(playerChoice, compChoice);
 
         }
-    }
+
 
     private void playerWin(String playerChoice, String compChoice) {
         int player = mapChoice(playerChoice);
@@ -91,23 +112,22 @@ class RPSSkel extends JFrame implements ActionListener {
 
         switch (winMatrix[computer][player]) {
             case 1:
-                System.out.println("Player wins");
+                // System.out.println("Player wins");
                 myboard.wins();
                 myboard.setUpper("WINS");
                 computersboard.setUpper("LOST");
                 break;
             case 0:
-                System.out.println("Tie");
+                // System.out.println("Tie");
                 myboard.setUpper("TIE");
                 computersboard.setUpper("TIE");
                 break;
             case -1:
-                System.out.println("Computer wins");
+                // System.out.println("Computer wins");
                 computersboard.wins();
                 myboard.setUpper("LOST");
                 computersboard.setUpper("WINS");
         }
-        // return winMatrix[player][computer];
     }
 
     private int mapChoice(String choice) {
@@ -138,8 +158,8 @@ class RPSSkel extends JFrame implements ActionListener {
             in=new BufferedReader
                     (new InputStreamReader(socket.getInputStream()));
             out=new PrintWriter(socket.getOutputStream());
-            out.println("Charlotta"); out.flush();
-            System.out.println(in.readLine());
+            //out.println("Charlotta"); out.flush();
+            //System.out.println(in.readLine());
             //out.println("Charlotta"); out.flush();
             //System.out.println(in.readLine());
             //out.println("STEN"); out.flush();
