@@ -16,7 +16,7 @@ class RPSSkel extends JFrame implements ActionListener {
     private BufferedReader in;
     private PrintWriter out;
     private JButton closebutton;
-    private Integer[][] winMatrix = {{0,-1,1},{1,0,-1},{-1,1,0}};
+    // private Integer[][] winMatrix = {{0,-1,1},{1,0,-1},{-1,1,0}};
 
     RPSSkel () {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -44,70 +44,60 @@ class RPSSkel extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        String countdown = "";
         counter++;
-        System.out.println(counter);
-
-        switch(counter) {
-            case 1:
-                countdown = "ETT";
-                break;
-            case 2:
-                countdown = "TVÅ";
-                break;
-            case 3:
-                countdown = "TRE";
-        }
-        myboard.setLower(countdown);
-        computersboard.setLower(countdown);
-
         myboard.resetColor();
         computersboard.resetColor();
 
-        if (counter == 3) {
-            counter = 0;
-            JButton playerButton = (JButton) e.getSource();
-            String playerChoice = playerButton.getActionCommand();
-            out.println(playerChoice); out.flush();
-            try {
+        switch(counter) {
+            case 1:
+                myboard.setLower("ETT");
+                computersboard.setLower("ETT");
+                break;
+            case 2:
+                myboard.setLower("TVÅ");
+                computersboard.setLower("TVÅ");
+                break;
+            case 3:
+                myboard.setLower("TRE");
+                computersboard.setLower("TRE");
 
-                String compChoice = in.readLine();
-                computersboard.markPlayed(compChoice);
-                myboard.markPlayed(playerChoice);
-                playerWin(playerChoice, compChoice);
-            } catch (IOException ioError) {
-                System.out.println(ioError);
-            }
-
-            // Check the move
-            //playerWin(playerChoice, compChoice);
-
+                counter = 0;
+                JButton playerButton = (JButton) e.getSource();
+                String playerChoice = playerButton.getActionCommand();
+                out.println(playerChoice); out.flush();
+                try {
+                    String compChoice = in.readLine();
+                    computersboard.markPlayed(compChoice);
+                    myboard.markPlayed(playerChoice);
+                    playerWin(playerChoice, compChoice);
+                } catch (IOException ioError) {
+                    System.out.println(ioError);
+                }
         }
-    }
+     }
+
 
     private void playerWin(String playerChoice, String compChoice) {
+        // Matrix of win/lose where 1 win, 0 tie and -1 lose
+        Integer[][] winMatrix = {{0,-1,1},{1,0,-1},{-1,1,0}};
         int player = mapChoice(playerChoice);
         int computer = mapChoice(compChoice);
 
         switch (winMatrix[computer][player]) {
             case 1:
-                System.out.println("Player wins");
                 myboard.wins();
                 myboard.setUpper("WINS");
                 computersboard.setUpper("LOST");
                 break;
             case 0:
-                System.out.println("Tie");
                 myboard.setUpper("TIE");
                 computersboard.setUpper("TIE");
                 break;
             case -1:
-                System.out.println("Computer wins");
                 computersboard.wins();
                 myboard.setUpper("LOST");
                 computersboard.setUpper("WINS");
         }
-        // return winMatrix[player][computer];
     }
 
     private int mapChoice(String choice) {
