@@ -1,9 +1,12 @@
 import java.awt.*;
 import java.awt.event.*;
+import javax.sound.sampled.*;
 import javax.swing.*;
 import java.net.*;
 import java.io.*;
 import java.util.*;
+
+import static javax.sound.sampled.BooleanControl.Type.MUTE;
 
 /*
 Given class
@@ -16,11 +19,44 @@ class RPSSkel extends JFrame implements ActionListener {
     private BufferedReader in;
     private PrintWriter out;
     private JButton closebutton;
-    // private Integer[][] winMatrix = {{0,-1,1},{1,0,-1},{-1,1,0}};
+    private JToggleButton soundbutton;
+    private boolean soundState = false;
+    private AudioInputStream as;
+
+
 
     RPSSkel () {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         closebutton = new JButton("Close");
+
+        closebutton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                out.println("\u0000"); out.flush();
+                System.exit(0);
+            }
+        });
+
+        soundbutton = new JToggleButton("Sound OFF");
+        soundbutton.setSelected(soundState);
+
+        soundbutton.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                int state = e.getStateChange();
+                if (state == 1) {
+                    soundbutton.setText("Sound ON");
+                    soundState = true;
+                }
+                else {
+                    soundbutton.setText("Sound OFF");
+                    soundState = false;
+
+                }
+                soundbutton.setSelected(soundState);
+            }
+        });
+
         myboard = new Gameboard("Myself", this); // Must be changed
 
         computersboard = new Gameboard("Computer");
@@ -30,6 +66,7 @@ class RPSSkel extends JFrame implements ActionListener {
         boards.add(computersboard);
         add(boards, BorderLayout.CENTER);
         add(closebutton, BorderLayout.SOUTH);
+        add(soundbutton, BorderLayout.NORTH);
         setSize(300, 550);
         setVisible(true);
 
@@ -50,16 +87,16 @@ class RPSSkel extends JFrame implements ActionListener {
 
         switch(counter) {
             case 1:
-                myboard.setLower("ETT");
-                computersboard.setLower("ETT");
+                myboard.setUpper("ETT");
+                computersboard.setUpper("ETT");
                 break;
             case 2:
-                myboard.setLower("TVÅ");
-                computersboard.setLower("TVÅ");
+                myboard.setUpper("TVÅ");
+                computersboard.setUpper("TVÅ");
                 break;
             case 3:
-                myboard.setLower("TRE");
-                computersboard.setLower("TRE");
+                myboard.setUpper("TRE");
+                computersboard.setUpper("TRE");
 
                 counter = 0;
                 JButton playerButton = (JButton) e.getSource();
@@ -69,34 +106,44 @@ class RPSSkel extends JFrame implements ActionListener {
                     String compChoice = in.readLine();
                     computersboard.markPlayed(compChoice);
                     myboard.markPlayed(playerChoice);
-                    playerWin(playerChoice, compChoice);
+                    checkMove(playerChoice, compChoice);
                 } catch (IOException ioError) {
                     System.out.println(ioError);
                 }
+                break;
         }
      }
 
 
-    private void playerWin(String playerChoice, String compChoice) {
+    private void checkMove(String playerChoice, String compChoice) {
         // Matrix of win/lose where 1 win, 0 tie and -1 lose
         Integer[][] winMatrix = {{0,-1,1},{1,0,-1},{-1,1,0}};
         int player = mapChoice(playerChoice);
         int computer = mapChoice(compChoice);
+        URL soundfile = null;
 
         switch (winMatrix[computer][player]) {
             case 1:
                 myboard.wins();
-                myboard.setUpper("WINS");
-                computersboard.setUpper("LOST");
+                myboard.setLower("WINS");
+                computersboard.setLower("LOSE");
+                soundfile = RPSSkel.class.getResource("/resources/win.wav");
                 break;
             case 0:
-                myboard.setUpper("TIE");
-                computersboard.setUpper("TIE");
+                myboard.setLower("DRAW");
+                computersboard.setLower("DRAW");
+                soundfile = RPSSkel.class.getResource("/resources/draw.wav");
                 break;
             case -1:
                 computersboard.wins();
-                myboard.setUpper("LOST");
-                computersboard.setUpper("WINS");
+                myboard.setLower("LOSE");
+                computersboard.setLower("WINS");
+                soundfile = RPSSkel.class.getResource("/resources/lose.wav");
+                break;
+        }
+
+        if (soundState) {
+            playSound(soundfile);
         }
     }
 
@@ -120,6 +167,29 @@ class RPSSkel extends JFrame implements ActionListener {
         }
 
         return numChoice;
+    }
+
+    public void playSound(URL soundfile) {
+        try {
+            if (soundState) {
+                as = AudioSystem.getAudioInputStream(soundfile);
+                Clip clip = AudioSystem.getClip();
+                clip.open(as);
+                clip.start();
+            }
+        }
+        catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+        catch (UnsupportedAudioFileException e) {
+            e.printStackTrace();
+        }
+        catch (LineUnavailableException e) {
+            e.printStackTrace();
+        }
     }
 
     private void setupConnection() {
