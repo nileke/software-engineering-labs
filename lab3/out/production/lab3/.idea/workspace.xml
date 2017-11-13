@@ -2,9 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20d765e4-3ced-415f-8906-59fda21f188a" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/RPSSkel.class" afterPath="$PROJECT_DIR$/out/RPSSkel.class" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/.idea/misc.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/.idea/modules.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/.idea/vcs.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/.idea/workspace.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/Gameboard.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/lab3.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/resources/draw.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/resources/lose.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/resources/paper.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/resources/rock.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/resources/scissors.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/resources/win.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/src/resources/draw.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/src/resources/lose.wav" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/src/resources/paper.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/src/resources/rock.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/src/resources/scissors.gif" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/src/resources/win.wav" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lab3.iml" afterPath="$PROJECT_DIR$/lab3.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/RPSSkel.java" afterPath="$PROJECT_DIR$/src/RPSSkel.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +41,8 @@
       <file leaf-file-name="RPSSkel.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/RPSSkel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+            <state relative-caret-position="130">
+              <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -285,7 +301,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="24" width="1920" height="1056" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -300,7 +315,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18002136" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18002136" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -430,8 +445,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/RPSSkel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="23" column="12" lean-forward="false" selection-start-line="23" selection-start-column="12" selection-end-line="23" selection-end-column="12" />
+        <state relative-caret-position="130">
+          <caret line="34" column="51" lean-forward="false" selection-start-line="34" selection-start-column="51" selection-end-line="34" selection-end-column="51" />
           <folding />
         </state>
       </provider>
@@ -493,7 +508,6 @@
             <option name="proportions">
               <list>
                 <option value="0.2" />
-                <option value="0.6" />
               </list>
             </option>
           </splitter-proportions>
