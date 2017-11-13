@@ -41,6 +41,8 @@ class RPSSkel extends JFrame implements ActionListener {
         soundbutton.setSelected(soundState);
 
         soundbutton.addItemListener(new ItemListener() {
+            // https://stackoverflow.com/questions/28382432/java-swing-making-on-off-button
+
             @Override
             public void itemStateChanged(ItemEvent e) {
                 int state = e.getStateChange();
@@ -170,6 +172,7 @@ class RPSSkel extends JFrame implements ActionListener {
     }
 
     public void playSound(URL soundfile) {
+        // https://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
         try {
             if (soundState) {
                 as = AudioSystem.getAudioInputStream(soundfile);
