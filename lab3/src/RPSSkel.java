@@ -171,7 +171,7 @@ class RPSSkel extends JFrame implements ActionListener {
         return numChoice;
     }
 
-    public void playSound(URL soundfile) {
+    void playSound(URL soundfile) {
         // https://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
         try {
             if (soundState) {
