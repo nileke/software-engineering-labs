@@ -1,8 +1,10 @@
 package Extra;
 
+import java.util.ArrayList;
+
 public abstract class Component {
 
-    protected abstract double getWeight();
     public abstract String toString();
-
+    public abstract boolean hasChildren();
+    public abstract ArrayList<Component> getChildren();
 }

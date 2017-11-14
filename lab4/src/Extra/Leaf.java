@@ -1,3 +1,7 @@
+package Extra;
+
+import java.util.ArrayList;
+
 public class Leaf extends Component {
 
     private String name;
@@ -13,13 +17,18 @@ public class Leaf extends Component {
     }
 
     @Override
-    protected double getWeight() {
-        return this.weight;
+    public String toString() {
+        return this.name;    }
+
+    @Override
+    public boolean hasChildren() {
+        return false;
     }
 
     @Override
-    public String toString() {
-        return this.name;    }
+    public ArrayList<Component> getChildren() {
+        return null;
+    }
 
 
 }

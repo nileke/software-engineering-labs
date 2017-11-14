@@ -1,9 +1,11 @@
 package Extra;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 
-public class Composite extends Component {
+public class Composite extends Component implements Iterable {
 
     private String name;
     private double weight;
@@ -20,20 +22,8 @@ public class Composite extends Component {
     }
 
     @Override
-    protected double getWeight() {
-        double totalWeight = weight;
-        for (Component child : children) {
-            totalWeight += child.getWeight();
-        }
-        return totalWeight;
-    }
-
-    @Override
     public String toString() {
-        StringBuilder str = new StringBuilder(this.name + ":");
-        for (Component child : children) {
-            str.append(String.join("", " " + child.toString()));
-        } return str.toString();
+        return this.name;
     }
 
     void addChild(Component child) {
@@ -42,6 +32,71 @@ public class Composite extends Component {
 
     void removeChild(Component child) {
         children.remove(child);
+    }
+
+    @Override
+    public ArrayList<Component> getChildren() {
+        return children;
+    }
+
+    @Override
+    public boolean hasChildren() {
+        return children.size() > 0;
+    }
+
+    @Override
+    public Iterator iterator() {
+        LinkedList queue = new LinkedList();
+
+        for (Component child : children) {
+            queue.add(child);
+        }
+
+        return new Iterator() {
+            @Override
+            public boolean hasNext() {
+                return !queue.isEmpty();
+            }
+
+            @Override
+            public Object next() {
+                Component child = (Component) queue.pop();
+                if (child.hasChildren()) {
+                    ArrayList<Component> children = child.getChildren();
+                    for (Component c : children) {
+                        queue.addLast(c);
+                    }
+                }
+            return child;
+            }
+        };
+    }
+
+    Iterator deepIterator() {
+        LinkedList stack = new LinkedList();
+
+        for (int i=children.size()-1; i>=0; i--) {
+            stack.addFirst(children.get(i));
+        }
+
+        return new Iterator() {
+            @Override
+            public boolean hasNext() {
+                return !stack.isEmpty();
+            }
+
+            @Override
+            public Object next() {
+                Component child = (Component) stack.pop();
+                if (child.hasChildren()) {
+                    ArrayList<Component> children = child.getChildren();
+                    for (int i=children.size()-1; i>=0; i--) {
+                        stack.addFirst(children.get(i));
+                    }
+                }
+                return child;
+            }
+        };
     }
 
 }

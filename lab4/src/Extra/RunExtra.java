@@ -1,11 +1,14 @@
-public class Run {
+package Extra;
+
+import java.util.Iterator;
+
+public class RunExtra {
 
     public static void main(String[] args) {
-
         Composite suitcase = new Composite("suitcase", 100);
-        Composite bag = new Composite("bag", 20);
-        Composite trunk = new Composite("trunk", 5);
-        Composite ness = new Composite("ness", 2);
+        Composite bag = new Composite("bag", 10);
+        Composite trunk = new Composite("trunk", 20);
+        Composite ness = new Composite("ness", 30);
 
         Leaf laptop = new Leaf("laptop", 10);
         Leaf camera = new Leaf("camera", 40);
@@ -27,6 +30,7 @@ public class Run {
         trunk.addChild(jumper);
 
 
+
         //bag has trunk as well as camera, toothbrush and laptop
         bag.addChild(laptop);
         bag.addChild(camera);
@@ -40,23 +44,9 @@ public class Run {
         suitcase.addChild(phone);
 
 
-        //printing the entire suitcase
-        System.out.println(suitcase);
-        System.out.println(suitcase.getWeight());
-
-
-        //removing the hairspray
-        System.out.println("Removing the hairspray");
-        ness.removeChild(hairspray);
-
-        System.out.println(suitcase);
-        System.out.println(suitcase.getWeight());
-
-        //removing the entire trunk
-        System.out.println("Removing the trunk");
-        bag.removeChild(trunk);
-
-        System.out.println(suitcase);
-        System.out.println(suitcase.getWeight());
+        for (Iterator<Component> i = suitcase.deepIterator(); i.hasNext();) {
+            Component item = i.next();
+            System.out.println(item);
+        }
     }
 }
