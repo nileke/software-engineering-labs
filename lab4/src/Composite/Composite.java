@@ -9,7 +9,7 @@ public class Composite extends Component {
     private ArrayList<Component> children = new ArrayList<Component>();
     private String content;
 
-    Composite(String name, double weight) {
+    public Composite(String name, double weight) {
         this.name = name;
         this.weight = weight;
     }
@@ -19,7 +19,7 @@ public class Composite extends Component {
     }
 
     @Override
-    protected double getWeight() {
+    public double getWeight() {
         double totalWeight = weight;
         for (Component child : children) {
             totalWeight += child.getWeight();
@@ -35,11 +35,11 @@ public class Composite extends Component {
         } return str.toString();
     }
 
-    void addChild(Component child) {
+    public void addChild(Component child) {
         children.add(child);
     }
 
-    void removeChild(Component child) {
+    public void removeChild(Component child) {
         children.remove(child);
     }
 
