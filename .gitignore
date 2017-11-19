@@ -1,8 +1,8 @@
 # lab3/.idea/
 .idea/
-lab*/.idea/
+**/.idea/
 # lab1/.idea/
 # lab0/.idea/
-lab*/*.iml
-lab*/*.xml
+**/*.iml
+**/*.xml
 
