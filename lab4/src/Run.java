@@ -1,4 +1,4 @@
-package Composite;
+import Composite.*;
 
 public class Run {
 
