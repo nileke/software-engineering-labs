@@ -22,7 +22,7 @@ class RPSSkel extends JFrame implements ActionListener {
     private JToggleButton soundbutton;
     private boolean soundState = false;
     private AudioInputStream as;
-
+    private Hashtable<String, Integer> rpsIdx;
 
 
     RPSSkel () {
@@ -42,7 +42,6 @@ class RPSSkel extends JFrame implements ActionListener {
 
         soundbutton.addItemListener(new ItemListener() {
             // https://stackoverflow.com/questions/28382432/java-swing-making-on-off-button
-
             @Override
             public void itemStateChanged(ItemEvent e) {
                 int state = e.getStateChange();
@@ -53,7 +52,6 @@ class RPSSkel extends JFrame implements ActionListener {
                 else {
                     soundbutton.setText("Sound OFF");
                     soundState = false;
-
                 }
                 soundbutton.setSelected(soundState);
             }
@@ -73,6 +71,11 @@ class RPSSkel extends JFrame implements ActionListener {
         setVisible(true);
 
         setupConnection();
+
+        rpsIdx = new Hashtable<>();
+        rpsIdx.put("STEN", 0);
+        rpsIdx.put("SAX", 1);
+        rpsIdx.put("PASE", 2);
 
     }
 
@@ -120,9 +123,14 @@ class RPSSkel extends JFrame implements ActionListener {
     private void checkMove(String playerChoice, String compChoice) {
         // Matrix of win/lose where 1 win, 0 tie and -1 lose
         Integer[][] winMatrix = {{0,-1,1},{1,0,-1},{-1,1,0}};
-        int player = mapChoice(playerChoice);
-        int computer = mapChoice(compChoice);
+
+        Integer player = rpsIdx.get(playerChoice);
+        Integer computer = rpsIdx.get(compChoice);
         URL soundfile = null;
+
+        if (player == null || computer == null) {
+            throw new java.lang.Error("Something went wrong");
+        }
 
         switch (winMatrix[computer][player]) {
             case 1:
@@ -148,28 +156,7 @@ class RPSSkel extends JFrame implements ActionListener {
             playSound(soundfile);
         }
     }
-
-    private int mapChoice(String choice) {
-        int numChoice = -1;
-
-        switch(choice) {
-            case "STEN":
-                numChoice = 0;
-                break;
-            case "SAX":
-                numChoice = 1;
-                break;
-            case "PASE":
-                numChoice = 2;
-                break;
-        }
-
-        if (numChoice == -1) {
-            throw new java.lang.Error("Something went wrong");
-        }
-
-        return numChoice;
-    }
+    
 
     void playSound(URL soundfile) {
         // https://stackoverflow.com/questions/26305/how-can-i-play-sound-in-java
