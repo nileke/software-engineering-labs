@@ -26,11 +26,11 @@ public class Composite extends Component implements Iterable {
         return this.name;
     }
 
-    void addChild(Component child) {
+    public void addChild(Component child) {
         children.add(child);
     }
 
-    void removeChild(Component child) {
+    public void removeChild(Component child) {
         children.remove(child);
     }
 
