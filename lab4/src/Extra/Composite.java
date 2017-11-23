@@ -72,7 +72,7 @@ public class Composite extends Component implements Iterable {
         };
     }
 
-    Iterator deepIterator() {
+    public Iterator deepIterator() {
         LinkedList stack = new LinkedList();
 
         for (int i=children.size()-1; i>=0; i--) {
