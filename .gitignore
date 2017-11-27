@@ -1,8 +1,9 @@
-# lab3/.idea/
 .idea/
 **/.idea/
 # lab1/.idea/
 # lab0/.idea/
 **/*.iml
 **/*.xml
-
+.DS_Store
+out/
+*.class
