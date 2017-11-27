@@ -1,3 +1,5 @@
+package GameTools;
+
 import javafx.util.Pair;
 
 import javax.swing.*;
@@ -8,7 +10,7 @@ public class Square extends JButton {
     private int j;
     private String s;
 
-    Square(int i, int j) {
+    public Square(int i, int j) {
         this.i = i;
         this.j = j;
     }

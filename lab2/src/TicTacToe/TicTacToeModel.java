@@ -1,3 +1,7 @@
+package TicTacToe;
+
+import GameTools.Boardgame;
+
 public class TicTacToeModel implements Boardgame {
 
     private String currentMessage = "Player X starts the game";

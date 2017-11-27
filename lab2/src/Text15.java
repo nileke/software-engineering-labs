@@ -1,3 +1,6 @@
+import GameTools.Boardgame;
+import FifteenGame.FifteenModel;
+
 import java.util.*;
 /**
  * Created by Nils on 2017-09-30.

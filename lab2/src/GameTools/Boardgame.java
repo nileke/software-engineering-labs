@@ -1,3 +1,5 @@
+package GameTools;
+
 /**
  * Created by Nils on 2017-09-30.
  */
