@@ -1,3 +1,5 @@
+package Grunduppgift;
+
 import java.awt.*;
 
 /**

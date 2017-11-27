@@ -1,3 +1,5 @@
+package Grunduppgift;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -16,8 +18,8 @@ class Frame extends JFrame {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
-        // JButton button1 = new MyButton(Color.lightGray, Color.darkGray, "On", "Off");
-        // JButton button2 = new MyButton(Color.darkGray, Color.lightGray, "Run", "Stop");
+        // JButton button1 = new Grunduppgift.MyButton(Color.lightGray, Color.darkGray, "On", "Off");
+        // JButton button2 = new Grunduppgift.MyButton(Color.darkGray, Color.lightGray, "Run", "Stop");
         panel.setBackground(Color.darkGray);
 
         frame.add(panel);
