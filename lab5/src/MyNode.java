@@ -11,4 +11,12 @@ public class MyNode extends DefaultMutableTreeNode{
         this.attr = attr;
     }
 
+
+    public String getLevelInfo() {
+        return level;
+    }
+
+    public String getAttrInfo() {
+        return attr;
+    }
 }

@@ -4,6 +4,7 @@ import org.jdom2.input.SAXBuilder;
 
 import javax.swing.*;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -17,7 +18,7 @@ public class DirTree extends TreeFrame {
     void initTree() {
         org.jdom2.Element rootElement = document.getRootElement();
 
-        String rootAttr = rootElement.getName();
+        String rootAttr = rootElement.getText();
         String rootLevel = rootElement.getAttributeValue("namn");
 
         MyNode root = new MyNode(rootLevel, rootAttr);
@@ -40,6 +41,28 @@ public class DirTree extends TreeFrame {
                 buildTree(e, child);
             }
         }
+    }
+
+    void showDetails(TreePath p) {
+        if (p == null) { return; }
+
+        MyNode node = (MyNode) p.getLastPathComponent();
+        String info = node.getLevelInfo() + " " + node.getAttrInfo();
+
+        if (p.getParentPath() != null) {
+            info += "\nMen allt som";
+            String parentPath = p.getParentPath().toString();
+            String[] arr = parentPath.split(",");
+            for (int i = arr.length; i > 0; i--) {
+                MyNode n = (MyNode) p.getPathComponent(i);
+                info += " ar " + n.getLevelInfo();
+            }
+            info += " ar Liv";
+        }
+
+        JOptionPane.showMessageDialog(this, info);
+
+
     }
 
     public static void main(String[] args) {
