@@ -3,12 +3,12 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class MyNode extends DefaultMutableTreeNode{
 
     String level;
-    String value;
+    String attr;
 
-    public MyNode(String level, String value) {
-        super();
+    public MyNode(String level, String attr) {
+        super(level);
         this.level = level;
-        this.value = value;
+        this.attr = attr;
     }
 
 }
