@@ -7,7 +7,6 @@ import javax.swing.tree.DefaultTreeModel;
 import javax.swing.tree.TreePath;
 import java.io.File;
 import java.io.IOException;
-import java.util.LinkedList;
 import java.util.List;
 
 public class DirTree extends TreeFrame {
@@ -34,7 +33,6 @@ public class DirTree extends TreeFrame {
             String level = e.getAttributeValue("namn");
 
             MyNode child = new MyNode(level, attr);
-            System.out.println(child + "\n");
             parent.add(child);
 
             if (e.getChildren() != null) {
