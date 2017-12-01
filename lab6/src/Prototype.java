@@ -6,11 +6,9 @@ public class Prototype extends JFrame {
     JFrame window;
     JTextField urlField;
     JEditorPane webPane;
+    JScrollPane links;
 
     Prototype() {
-        super();
-        frameInit();
-
         window = new JFrame();
         window.setSize(500, 500);
         window.setVisible(true);
@@ -22,8 +20,7 @@ public class Prototype extends JFrame {
         window.add(webPane, BorderLayout.CENTER);
 
         JTable table = new JTable(50,2);
-        JScrollPane links = new JScrollPane(table);
-
+        links = new JScrollPane(table);
         window.add(links, BorderLayout.EAST);
     }
 
