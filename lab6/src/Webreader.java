@@ -20,4 +20,6 @@ public class Webreader extends JEditorPane {
             e.getStackTrace();
         }
     }
+
+
 }

@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.html.HTML;
@@ -8,11 +10,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 
-public class UrlFinder {
-    ;
 
-    public static void main(String[] args) {
-        String webpage="http://www.nada.kth.se/~henrik";
+public class UrlFinder {
+    HTMLDocument doc;
+
+    public UrlFinder() { }
+
+    public UrlFinder(String url) {
+        String webpage=url;
         InputStream in= null;
         try {
             in = new URL(webpage).openConnection().getInputStream();
@@ -20,29 +25,44 @@ public class UrlFinder {
             e.printStackTrace();
         }
         InputStreamReader reader= new InputStreamReader(in);
-        HTMLDocument doc = new HTMLDocument();
+        doc = new HTMLDocument();
         doc.putProperty("IgnoreCharsetDirective", Boolean.TRUE);
+
         try {
             new HTMLEditorKit().read(reader,doc,0);
-        } catch (IOException e) {
+        } catch (IOException | BadLocationException e) {
             e.printStackTrace();
-        } catch (BadLocationException e) {
-            e.printStackTrace();
-        }
-
-        for (HTMLDocument.Iterator iter = doc.getIterator(HTML.Tag.A); iter.isValid(); iter.next()) {
-            AttributeSet attr = iter.getAttributes();
-            int start = iter.getStartOffset();
-            int end = iter.getEndOffset();
-            int length = end - start;
-
-            try {
-                System.out.println(doc.getText(start, length));
-            } catch (BadLocationException e) {
-                e.printStackTrace();
-            }
-            System.out.println(attr.getAttribute(HTML.Attribute.HREF));
-
         }
     }
+
+        String[][] getUrlMatrix() {
+            String[][] urlMatrix = new String[50][2];
+            int count = 0;
+
+            if (doc == null) {
+                return null;
+            }
+
+            for (HTMLDocument.Iterator iter = doc.getIterator(HTML.Tag.A); iter.isValid(); iter.next()) {
+                String value = "";
+                if (count > 49) {
+                    return urlMatrix;
+                }
+                AttributeSet attr = iter.getAttributes();
+                int start = iter.getStartOffset();
+                int length = iter.getEndOffset() - iter.getStartOffset();
+                String link = (String) attr.getAttribute(HTML.Attribute.HREF);
+                try {
+                    value = doc.getText(start, length);
+                    System.out.println(value);
+                    urlMatrix[count][0] = link;
+                    urlMatrix[count][1] = value;
+                } catch (BadLocationException e) {
+                    e.printStackTrace();
+                }
+                count++;
+            }
+
+            return urlMatrix;
+        }
 }
