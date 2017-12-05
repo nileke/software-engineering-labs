@@ -37,8 +37,8 @@ public class WebBrowser extends JFrame {
         urlField.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                setUrl(e.getActionCommand());
                 showUrls(e.getActionCommand());
+                setUrl(e.getActionCommand());
 
             }
         });
@@ -55,9 +55,11 @@ public class WebBrowser extends JFrame {
     void showUrls(String url) {
         UrlFinder urlFinder = new UrlFinder(url);
         urlMatrix = urlFinder.getUrlMatrix();
+        String[] header = {"WEBADRESS", "LINK TEXT"};
         if (urlMatrix != null) {
-            String[] header = {"WEBADRESS", "LINK TEXT"};
             table.setModel(new DefaultTableModel(urlMatrix, header));
+        } else {
+            table.setModel(new DefaultTableModel(new String[50][2], header));
         }
     }
 

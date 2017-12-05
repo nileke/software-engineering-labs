@@ -8,6 +8,7 @@ import javax.swing.text.html.HTMLEditorKit;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 
@@ -19,18 +20,24 @@ public class UrlFinder {
     public UrlFinder(String url) {
         String webpage=url;
         InputStream in= null;
+        InputStreamReader reader = null;
         try {
             in = new URL(webpage).openConnection().getInputStream();
-        } catch (IOException e) {
+            reader= new InputStreamReader(in, "ISO-8859-1");
+        } catch (IOException | NullPointerException e) {
             e.printStackTrace();
+            System.out.println("Catched error: Reader/in");
+            // doc = null;
+            // getUrlMatrix();
         }
-        InputStreamReader reader= new InputStreamReader(in);
+
         doc = new HTMLDocument();
+
         doc.putProperty("IgnoreCharsetDirective", Boolean.TRUE);
 
         try {
             new HTMLEditorKit().read(reader,doc,0);
-        } catch (IOException | BadLocationException e) {
+        } catch (IOException | BadLocationException | NullPointerException e) {
             e.printStackTrace();
         }
     }
