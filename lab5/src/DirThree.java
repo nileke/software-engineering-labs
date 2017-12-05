@@ -76,8 +76,12 @@ public class DirThree extends TreeFrame {
     }
 
     public static void main(String[] args) {
+        String filepath = directory + "Life.xml";
+        if (args.length > 0) {
+            filepath = args[0];
+        }
         try {
-            File inputFile = new File(directory + "Life.xml");
+            File inputFile = new File(filepath);
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             document = dBuilder.parse(inputFile);

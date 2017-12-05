@@ -74,9 +74,7 @@ public class DirTree extends TreeFrame {
             SAXBuilder saxBuilder = new SAXBuilder();
             document = saxBuilder.build(inputFile);
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (JDOMException e) {
+        } catch (IOException | JDOMException e) {
             e.printStackTrace();
         }
         new DirTree();
