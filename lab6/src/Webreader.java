@@ -1,5 +1,6 @@
 import javax.swing.*;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URL;
 
 public class Webreader extends JEditorPane {
@@ -8,11 +9,17 @@ public class Webreader extends JEditorPane {
        this.setEditable(false);
     }
 
-    void showPage(URL webUrl) {
+    void showPage(String url) {
         try {
+            URL webUrl = new URL(url);
             this.setPage(webUrl);
+        } catch (MalformedURLException e1) {
+            e1.getStackTrace();
+            this.setText("404 dude...");
         } catch (IOException e) {
             e.getStackTrace();
         }
     }
+
+
 }

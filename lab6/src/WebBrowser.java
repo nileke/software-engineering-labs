@@ -1,43 +1,68 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.net.MalformedURLException;
-import java.net.URL;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 
 public class WebBrowser extends JFrame {
 
     JFrame window;
     JTextField urlField;
     JScrollPane webPage;
+    Webreader webPane;
     JScrollPane links;
+    JTable table;
+    String[][] urlMatrix;
 
     WebBrowser() {
         super();
         frameInit();
 
         window = new JFrame();
-        window.setSize(500, 500);
         window.setVisible(true);
 
         urlField = new JTextField();
         window.add(urlField, BorderLayout.PAGE_START);
 
-        Webreader webPane = new Webreader();
+        webPane = new Webreader();
         webPage = new JScrollPane(webPane);
         window.add(webPage, BorderLayout.CENTER);
 
-        JTable table = new JTable(50,2);
+        table = new JTable(50, 2);
         links = new JScrollPane(table);
         window.add(links, BorderLayout.EAST);
 
-        URL url = null;
-        // Just testing showPage
-        try {
-            url = new URL("http://www.nada.kth.se/~snilsson");
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
-        webPane.showPage(url);
+
+        urlField.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                showUrls(e.getActionCommand());
+                setUrl(e.getActionCommand());
+
+            }
+        });
+
+        window.setSize(1000, 500);
+
     }
+
+    private void setUrl(String s) {
+        webPane.showPage(s);
+
+    }
+
+    void showUrls(String url) {
+        UrlFinder urlFinder = new UrlFinder(url);
+        urlMatrix = urlFinder.getUrlMatrix();
+        String[] header = {"WEBADRESS", "LINK TEXT"};
+        if (urlMatrix != null) {
+            table.setModel(new DefaultTableModel(urlMatrix, header));
+        } else {
+            table.setModel(new DefaultTableModel(new String[50][2], header));
+        }
+    }
+
 
     public static void main(String[] args) {
         new WebBrowser();
